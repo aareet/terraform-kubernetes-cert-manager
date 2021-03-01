@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "rolebinding_cert_manager_cainjector_leaderelecti
       {
         "kind" = "ServiceAccount"
         "name" = "cert-manager-cainjector"
-        "namespace" = "cert-manager"
+        "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
       },
     ]
   }

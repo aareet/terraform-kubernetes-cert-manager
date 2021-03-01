@@ -12,7 +12,7 @@ resource "kubernetes_manifest" "deployment_cert_manager" {
         "app.kubernetes.io/name" = "cert-manager"
       }
       "name" = "cert-manager"
-      "namespace" = "cert-manager"
+      "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
     }
     "spec" = {
       "replicas" = 1

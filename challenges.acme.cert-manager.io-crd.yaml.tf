@@ -22,7 +22,7 @@ resource "kubernetes_manifest" "customresourcedefinition_challenges_acme_cert_ma
           "clientConfig" = {
             "service" = {
               "name" = "cert-manager-webhook"
-              "namespace" = "cert-manager"
+              "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
               "path" = "/convert"
             }
           }

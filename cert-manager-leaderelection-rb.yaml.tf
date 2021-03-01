@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "rolebinding_cert_manager_leaderelection" {
       {
         "kind" = "ServiceAccount"
         "name" = "cert-manager"
-        "namespace" = "cert-manager"
+        "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
       },
     ]
   }

@@ -12,7 +12,7 @@ resource "kubernetes_manifest" "deployment_cert_manager_cainjector" {
         "app.kubernetes.io/name" = "cainjector"
       }
       "name" = "cert-manager-cainjector"
-      "namespace" = "cert-manager"
+      "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
     }
     "spec" = {
       "replicas" = 1

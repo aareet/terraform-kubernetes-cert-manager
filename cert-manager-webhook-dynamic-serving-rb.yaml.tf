@@ -12,7 +12,7 @@ resource "kubernetes_manifest" "rolebinding_cert_manager_webhook_dynamic_serving
         "app.kubernetes.io/name" = "webhook"
       }
       "name" = "cert-manager-webhook:dynamic-serving"
-      "namespace" = "cert-manager"
+      "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
     }
     "roleRef" = {
       "apiGroup" = "rbac.authorization.k8s.io"
@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "rolebinding_cert_manager_webhook_dynamic_serving
       {
         "kind" = "ServiceAccount"
         "name" = "cert-manager-webhook"
-        "namespace" = "cert-manager"
+        "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
       },
     ]
   }

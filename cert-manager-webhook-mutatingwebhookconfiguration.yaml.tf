@@ -25,7 +25,7 @@ resource "kubernetes_manifest" "mutatingwebhookconfiguration_cert_manager_webhoo
         "clientConfig" = {
           "service" = {
             "name" = "cert-manager-webhook"
-            "namespace" = "cert-manager"
+            "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
             "path" = "/mutate"
           }
         }

@@ -12,7 +12,7 @@ resource "kubernetes_manifest" "serviceaccount_cert_manager_webhook" {
         "app.kubernetes.io/name" = "webhook"
       }
       "name" = "cert-manager-webhook"
-      "namespace" = "cert-manager"
+      "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
     }
   }
 }

@@ -22,7 +22,7 @@ resource "kubernetes_manifest" "clusterrolebinding_cert_manager_controller_certi
       {
         "kind" = "ServiceAccount"
         "name" = "cert-manager"
-        "namespace" = "cert-manager"
+        "namespace" = kubernetes_manifest.namespace_cert_manager.object.metadata.name
       },
     ]
   }
